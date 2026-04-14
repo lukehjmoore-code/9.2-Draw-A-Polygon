@@ -7,9 +7,6 @@ def regular_polygon(turtle, sides):
         turtle.right(360/sides)
     turtle.end_fill()
 
-def other_polygons(turtle, sides):
-    quadrilateral = input("pick a quadrilateral: Unknown quadrilateral, Trapezoid, Parallelogram, Rectangle, Square")
-    if quadrilateral == ""
 
 screen = Screen()
 screen.bgcolor("silver")
@@ -36,11 +33,12 @@ while True:
             regular_polygon(pen, sides)
             name.write("HEXAGON", font = ("Times New Roman", 20))
     elif sides == 4:
-        
+        regular_polygon(pen, sides)
+        name.write("QUADRILATERAL", font = ("Times New Roman", 20))
     else:
         regular_polygon(pen, sides)
-             regular_polygon(pen, sides)
-            name.write("HEXAGON", font = ("Times New Roman", 20))
+        regular_polygon(pen, sides)
+        name.write("HEXAGON", font = ("Times New Roman", 20))
 
 
 screen.exitonclick()

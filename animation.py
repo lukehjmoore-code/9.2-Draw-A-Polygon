@@ -56,27 +56,69 @@ def create_turtle():
     turtle.color(generate_random_hex_color())
     turtle.shape("triangle")
     turtle.speed(2)
+    turtle.pensize(3)
     turtle.setheading(random.randint(0,360))
     return turtle
+
+def create_player():
+    global player
+    player = Turtle()
+    player.speed(0)
+    player.shape("square")
+    player.color("white")
+    player.pensize(3)
+
+def up():
+    global player
+    player.sety(player.ycor() + 5)
+
+def down():
+    global player
+    player.sety(player.ycor() - 5)
+
+def left():
+    global player
+    player.setx(player.xcor() - 5)
+
+def right():
+    global player
+    player.setx(player.xcor() + 5)
+
+
+
+
 
 screen = Screen()
 screen.bgcolor("black")
 screen.setup(700,700)
+
+screen.listen()
+screen.onkeypress(create_player, "space")
+screen.onkeypress(up, "w")
+screen.onkeypress(down, "s")
+screen.onkeypress(left, "a")
+screen.onkeypress(right, "d")
 
 draw_square()
 
 yertle = Turtle()
 yertle.color(generate_random_hex_color())
 yertle.shape("triangle")
+yertle.pensize(3)
 yertle.setheading(random.randint(0,360))
 deltaX = random.randint(-5,5)
 deltaY = random.randint(-5,5)
+
+player = None
 
 turtles = [yertle]
 
 while True:
     for turtle in turtles:
         turtles = move_forward(turtle, turtles)
+        if player != None and player.distance(turtle) < 20:
+            turtle.hideturtle()
+            turtles.remove(turtle)
     
 
 
